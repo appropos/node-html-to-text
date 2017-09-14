@@ -233,6 +233,12 @@ describe('html-to-text', function() {
         var testString = '<ul><li>foo</li><li>bar</li></ul>';
         expect(htmlToText.fromString(testString)).to.equal(' * foo\n * bar');
       });
+
+      it('should handle an unordered list prefix option', function() {
+        var testString = '<ul><li>foo</li><li>bar</li></ul>';
+        var options = {unorderedListItemPrefix: ' test '};
+        expect(htmlToText.fromString(testString, options)).to.equal(' test foo\n test bar');
+      });
     });
 
     describe('ol', function() {
